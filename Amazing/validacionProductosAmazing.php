@@ -12,15 +12,15 @@
     
 <?php
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $tmp_nombreProducto=depurar($_POST["nombreProducto"]);
-        if(strlen($tmp_nombreProducto)==0){
-            $err_nombreProducto="Campo obligatorio";
+        $tmp_usuario=depurar($_POST["nombreProducto"]);
+        if(strlen($tmp_usuario)==0){
+            $err_usuario="Campo obligatorio";
         }else{
             $regex="/^[a-zA-Z0-9_ñÑ ]{1,40}$/";
-            if(!preg_match($regex,$tmp_nombreProducto)){
-                $err_nombreProducto="Max. 40 caracteres, solo acepta letras, números y espacios en blanco";
+            if(!preg_match($regex,$tmp_usuario)){
+                $err_usuario="Max. 40 caracteres, solo acepta letras, números y espacios en blanco";
             }else{
-                $nombreUsuario=$tmp_nombreProducto;
+                $nombreUsuario=$tmp_usuario;
             }
         }
         $tmp_precio=depurar($_POST["precio"]);
@@ -35,23 +35,23 @@
         }
         $tmp_descripcion=depurar($_POST["descripcion"]);
         if(strlen($tmp_descripcion)==0){
-            $err_descripcion="Campo obligatorio";
+            $err_nacimiento="Campo obligatorio";
         }else{
             $regex="/^[A-ZÑ][a-zA-ZñÑ\ ]{1,255}$/";
             if(!preg_match($regex,$tmp_descripcion)){
-                $err_descripcion="Max. 255 caracteres";
+                $err_nacimiento="Max. 255 caracteres";
             }else{
                 $descripcion=$tmp_descripcion;
             }
         }
-        $tmp_cantidad=depurar($_POST["cantidad"]);
-        if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Campo obligatorio";
+        $tmp_contrasena=depurar($_POST["cantidad"]);
+        if(strlen($tmp_contrasena)==0){
+            $err_contrasena="Campo obligatorio";
         }else{
-            if($tmp_cantidad < 0 || $tmp_cantidad > 99999){
-                $err_cantidad="Min. 0, max. 99999";
+            if($tmp_contrasena < 0 || $tmp_contrasena > 99999){
+                $err_contrasena="Min. 0, max. 99999";
             }else{
-                $fechaNacimiento=$tmp_cantidad;
+                $fechaNacimiento=$tmp_contrasena;
             }
         }
     }
@@ -63,7 +63,7 @@
         <label class="form-label">Nombre del Producto: </label>
         <input type="text" name="nombreProducto" class="form-control">
         <?php
-        if (isset($err_nombreProducto)) echo $err_nombreProducto;
+        if (isset($err_usuario)) echo $err_usuario;
         ?><br><br>
          <label class="form-label">Precio: </label>
         <input type="text" name="precio" class="form-control">
@@ -73,12 +73,12 @@
         <label class="form-label">Descripción: </label>
         <input type="text" name="descripcion" class="form-control">
         <?php
-        if (isset($err_descripcion)) echo $err_descripcion;
+        if (isset($err_nacimiento)) echo $err_nacimiento;
         ?><br><br>
         <label class="form-label">Cantidad: </label>
         <input type="text" name="cantidad" class="form-control">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasena)) echo $err_contrasena;
         ?><br><br>
         <input type="submit" value="Enviar" class="btn btn-primary">
     </form>

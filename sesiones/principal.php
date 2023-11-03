@@ -13,7 +13,7 @@
     $usuario = $_SESSION["usuario"];
     ?>
     
-    <div class="cntainer">
+    <div class="container">
         <h1>Esta es la página principal</h1>
         <h2>Bienvenid@ <?php echo $usuario; ?></h2>
     </div>

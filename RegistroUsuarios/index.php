@@ -21,16 +21,16 @@
 <body>
     <?php
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $tmp_nombreProducto=depurar($_POST["usuario"]);
-        if(strlen($tmp_nombreProducto)==0){
-            $err_nombreProducto="Rellena el campo";
+        $tmp_usuario=depurar($_POST["usuario"]);
+        if(strlen($tmp_usuario)==0){
+            $err_usuario="Rellena el campo";
         }else{
             $regex="/^[a-zA-ZñÑ_][a-zA-Z0-9_ñÑ]{3,7}$/";
-            if(!preg_match($regex,$tmp_nombreProducto)){
-                $err_nombreProducto="Recuerda el nombre de usuario debe empezar por minucula, mayuscula o _, no
+            if(!preg_match($regex,$tmp_usuario)){
+                $err_usuario="Recuerda el nombre de usuario debe empezar por minucula, mayuscula o _, no
                 puede contener caracteres especiales y debe tener un extension alfnumrica total de 4 a 8 ";
             }else{
-                $nombreUsuario=$tmp_nombreProducto;
+                $nombreUsuario=$tmp_usuario;
             }
         }
         $tmp_precio=depurar($_POST["nombre"]);
@@ -44,27 +44,27 @@
                 $contrasena=$tmp_precio;
             }
         }
-        $tmp_cantidad=depurar($_POST["apellido"]);
-        if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Rellena el campo";
+        $tmp_contrasena=depurar($_POST["apellido"]);
+        if(strlen($tmp_contrasena)==0){
+            $err_contrasena="Rellena el campo";
         }else{
             $regex="/^[A-ZÑ][a-zA-ZñÑ\ ]{1,39}$/";
-            if(!preg_match($regex,$tmp_cantidad)){
-                $err_cantidad="De 2 a 40 caracteres empezando por mayuscula ";
+            if(!preg_match($regex,$tmp_contrasena)){
+                $err_contrasena="De 2 a 40 caracteres empezando por mayuscula ";
             }else{
-                $fechaNacimiento=$tmp_cantidad;
+                $fechaNacimiento=$tmp_contrasena;
             }
         }
         $tmp_nacimiento=depurar($_POST["nacimiento"]);
         if(strlen($tmp_nacimiento)==0){
-            $err_descripcion="Rellena el campo";
+            $err_nacimiento="Rellena el campo";
         }else{
             $dt= DateTime::createFromFormat("Y-m-d",$tmp_nacimiento);
             $fecha_actual=new DateTime();
             $diferencia=$fecha_actual->diff($dt);
             $anios=$diferencia->y;
             if($anios<18){
-                $err_descripcion="Eres menor ";
+                $err_nacimiento="Eres menor ";
             }else{
                 $descripcion=$tmp_nacimiento;
             }
@@ -77,7 +77,7 @@
         <label>Usuario: </label>
         <input type="text" name="usuario">
         <?php
-        if (isset($err_nombreProducto)) echo $err_nombreProducto;
+        if (isset($err_usuario)) echo $err_usuario;
         ?><br><br>
          <label>Nombre: </label>
         <input type="text" name="nombre">
@@ -87,12 +87,12 @@
         <label>Apellido: </label>
         <input type="text" name="apellido">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasena)) echo $err_contrasena;
         ?><br><br>
         <label>Fecha de nacimiento: </label>
         <input type="date" name="nacimiento">
         <?php
-        if (isset($err_descripcion)) echo $err_descripcion;
+        if (isset($err_nacimiento)) echo $err_nacimiento;
         ?><br><br>
         <input type="submit" value="Enviar">
     </form>

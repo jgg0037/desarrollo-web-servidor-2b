@@ -22,13 +22,13 @@
     
     #Validación ID
     if (strlen($temp_id_videojuego) == 0) {
-        $err_nombreProducto = "Campo obligatorio";
+        $err_usuario = "Campo obligatorio";
     } else {
         if (filter_var($temp_id_videojuego, FILTER_VALIDATE_INT) === FALSE) {
-            $err_nombreProducto = "Introduce un número";
+            $err_usuario = "Introduce un número";
         } else {
             if (strlen($temp_id_videojuego) > 8) {
-                $err_nombreProducto = "Máximo 8 dígitos";
+                $err_usuario = "Máximo 8 dígitos";
             } else{
                 $nombreUsuario = $temp_id_videojuego;
             }
@@ -46,21 +46,21 @@
     }
     #Validación PEGI
     if (strlen($temp_pegi) == 0) {
-        $err_descripcion = "Campo obligatorio";
+        $err_nacimiento = "Campo obligatorio";
     } else{
         $pegis_validos = ['3','7','12','16','18'];
         if (!in_array($temp_pegi, $pegis_validos)){
-            $err_descripcion = 'Loco, eso no esiste';
+            $err_nacimiento = 'Loco, eso no esiste';
         } else{
             $descripcion = $temp_pegi;
         }
     }
     #Validación Compañia
     if (strlen($temp_compania) == 0){
-        $err_cantidad = "Campo obligatorio";
+        $err_contrasena = "Campo obligatorio";
     } else {
         if (strlen($temp_compania) > 100) {
-            $err_cantidad = "Máximo 100 caracteres";
+            $err_contrasena = "Máximo 100 caracteres";
         } else{
             $fechaNacimiento = $temp_compania;
         }
@@ -74,10 +74,10 @@
             <label class="form-label">ID Videojuego</label>
             <input class="form-control" type="text" name="id_videojuego">
             <?php
-            if (isset($err_nombreProducto)) {
+            if (isset($err_usuario)) {
                 ?>
                 <div>
-                    <?php echo $err_nombreProducto ?>
+                    <?php echo $err_usuario ?>
                 </div>
                 <?php
             }
@@ -107,10 +107,10 @@
                 <option value="18">PEGI 18</option>
             </select>
             <?php
-            if (isset($err_descripcion)) {
+            if (isset($err_nacimiento)) {
                 ?>
                 <div>
-                    <?php echo $err_descripcion ?>
+                    <?php echo $err_nacimiento ?>
                 </div>
                 <?php
             }
@@ -120,10 +120,10 @@
             <label class="form-label">Compañía</label>
             <input class="form-control" type="text" name="compania">
             <?php
-            if (isset($err_cantidad)) {
+            if (isset($err_contrasena)) {
                 ?>
                 <div>
-                    <?php echo $err_cantidad ?>
+                    <?php echo $err_contrasena ?>
                 </div>
                 <?php
             }

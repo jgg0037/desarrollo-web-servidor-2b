@@ -10,15 +10,15 @@
 <body>
     <?php
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $tmp_nombreProducto=depurar($_POST["id_videojuego"]);
-        if(strlen($tmp_nombreProducto)==0){
-            $err_nombreProducto="Rellena el campo";
+        $tmp_usuario=depurar($_POST["id_videojuego"]);
+        if(strlen($tmp_usuario)==0){
+            $err_usuario="Rellena el campo";
         }else{
             $regex="/^[0-9]{1,8}$/";
-            if(!preg_match($regex,$tmp_nombreProducto)){
-                $err_nombreProducto="Debe ser un número de 1 a 8 cifras";
+            if(!preg_match($regex,$tmp_usuario)){
+                $err_usuario="Debe ser un número de 1 a 8 cifras";
             }else{
-                $nombreUsuario=$tmp_nombreProducto;
+                $nombreUsuario=$tmp_usuario;
             }
         }
         $tmp_precio=depurar($_POST["titulo"]);
@@ -32,27 +32,27 @@
                 $contrasena=$tmp_precio;
             }
         }
-        $tmp_cantidad=depurar($_POST["compania"]);
-        if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Rellena el campo";
+        $tmp_contrasena=depurar($_POST["compania"]);
+        if(strlen($tmp_contrasena)==0){
+            $err_contrasena="Rellena el campo";
         }else{
             $regex="/^[a-zA-Z0-9_ñÑ]{1,50}$/";
-            if(!preg_match($regex,$tmp_cantidad)){
-                $err_cantidad="De 1 a 50 caracteres";
+            if(!preg_match($regex,$tmp_contrasena)){
+                $err_contrasena="De 1 a 50 caracteres";
             }else{
-                $fechaNacimiento=$tmp_cantidad;
+                $fechaNacimiento=$tmp_contrasena;
             }
         }
         $tmp_nacimiento=depurar($_POST["pegi"]);
         if(strlen($tmp_nacimiento)==0){
-            $err_descripcion="Rellena el campo";
+            $err_nacimiento="Rellena el campo";
         }else{
             $dt= DateTime::createFromFormat("Y-m-d",$tmp_nacimiento);
             $fecha_actual=new DateTime();
             $diferencia=$fecha_actual->diff($dt);
             $anios=$diferencia->y;
             if($anios<18){
-                $err_descripcion="Eres menor ";
+                $err_nacimiento="Eres menor ";
             }else{
                 $descripcion=$tmp_nacimiento;
             }
@@ -65,7 +65,7 @@
         <label>ID Videojuego: </label>
         <input type="text" name="id_videojuego">
         <?php
-        if (isset($err_nombreProducto)) echo $err_nombreProducto;
+        if (isset($err_usuario)) echo $err_usuario;
         ?><br><br>
          <label>Título: </label>
         <input type="text" name="titulo">
@@ -75,7 +75,7 @@
         <label>Compañía: </label>
         <input type="text" name="compania">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasena)) echo $err_contrasena;
         ?><br><br>
         <label>Pegi: </label><br>
         <input type="radio" id="opcion1" name="opcion" value="3">
@@ -84,7 +84,7 @@
         <input type="radio" id="opcion4" name="opcion" value="16">
         <input type="radio" id="opcion5" name="opcion" value="18">
         <?php
-        if (isset($err_descripcion)) echo $err_descripcion;
+        if (isset($err_nacimiento)) echo $err_nacimiento;
         ?>
         <br><br>
         <input type="submit" value="Enviar">
