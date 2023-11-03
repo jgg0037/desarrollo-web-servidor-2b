@@ -21,52 +21,52 @@
 <body>
     <?php
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $tmp_usuario=depurar($_POST["usuario"]);
-        if(strlen($tmp_usuario)==0){
-            $err_usuario="Rellena el campo";
+        $tmp_nombreProducto=depurar($_POST["usuario"]);
+        if(strlen($tmp_nombreProducto)==0){
+            $err_nombreProducto="Rellena el campo";
         }else{
             $regex="/^[a-zA-ZñÑ_][a-zA-Z0-9_ñÑ]{3,7}$/";
-            if(!preg_match($regex,$tmp_usuario)){
-                $err_usuario="Recuerda el nombre de usuario debe empezar por minucula, mayuscula o _, no
+            if(!preg_match($regex,$tmp_nombreProducto)){
+                $err_nombreProducto="Recuerda el nombre de usuario debe empezar por minucula, mayuscula o _, no
                 puede contener caracteres especiales y debe tener un extension alfnumrica total de 4 a 8 ";
             }else{
-                $usuario=$tmp_usuario;
+                $nombreUsuario=$tmp_nombreProducto;
             }
         }
-        $tmp_nombre=depurar($_POST["nombre"]);
-        if(strlen($tmp_nombre)==0){
-            $err_nombre="Rellena el campo";
+        $tmp_precio=depurar($_POST["nombre"]);
+        if(strlen($tmp_precio)==0){
+            $err_precio="Rellena el campo";
         }else{
             $regex="/^([A-ZÑ][a-zA-ZñÑ\ ]{1,19})$/";
-            if(!preg_match($regex,$tmp_nombre)){
-                $err_nombre="De 2 a 20 caracteres empezando por mayuscula";
+            if(!preg_match($regex,$tmp_precio)){
+                $err_precio="De 2 a 20 caracteres empezando por mayuscula";
             }else{
-                $nombre=$tmp_nombre;
+                $contrasena=$tmp_precio;
             }
         }
-        $tmp_apellido=depurar($_POST["apellido"]);
-        if(strlen($tmp_apellido)==0){
-            $err_apellido="Rellena el campo";
+        $tmp_cantidad=depurar($_POST["apellido"]);
+        if(strlen($tmp_cantidad)==0){
+            $err_cantidad="Rellena el campo";
         }else{
             $regex="/^[A-ZÑ][a-zA-ZñÑ\ ]{1,39}$/";
-            if(!preg_match($regex,$tmp_apellido)){
-                $err_apellido="De 2 a 40 caracteres empezando por mayuscula ";
+            if(!preg_match($regex,$tmp_cantidad)){
+                $err_cantidad="De 2 a 40 caracteres empezando por mayuscula ";
             }else{
-                $apellido=$tmp_apellido;
+                $fechaNacimiento=$tmp_cantidad;
             }
         }
         $tmp_nacimiento=depurar($_POST["nacimiento"]);
         if(strlen($tmp_nacimiento)==0){
-            $err_nacimiento="Rellena el campo";
+            $err_descripcion="Rellena el campo";
         }else{
             $dt= DateTime::createFromFormat("Y-m-d",$tmp_nacimiento);
             $fecha_actual=new DateTime();
             $diferencia=$fecha_actual->diff($dt);
             $anios=$diferencia->y;
             if($anios<18){
-                $err_nacimiento="Eres menor ";
+                $err_descripcion="Eres menor ";
             }else{
-                $pegi=$tmp_nacimiento;
+                $descripcion=$tmp_nacimiento;
             }
         }
     }
@@ -77,30 +77,30 @@
         <label>Usuario: </label>
         <input type="text" name="usuario">
         <?php
-        if (isset($err_usuario)) echo $err_usuario;
+        if (isset($err_nombreProducto)) echo $err_nombreProducto;
         ?><br><br>
          <label>Nombre: </label>
         <input type="text" name="nombre">
         <?php
-        if (isset($err_nombre)) echo $err_nombre;
+        if (isset($err_precio)) echo $err_precio;
         ?><br><br>
         <label>Apellido: </label>
         <input type="text" name="apellido">
         <?php
-        if (isset($err_apellido)) echo $err_apellido;
+        if (isset($err_cantidad)) echo $err_cantidad;
         ?><br><br>
         <label>Fecha de nacimiento: </label>
         <input type="date" name="nacimiento">
         <?php
-        if (isset($err_nacimiento)) echo $err_nacimiento;
+        if (isset($err_descripcion)) echo $err_descripcion;
         ?><br><br>
         <input type="submit" value="Enviar">
     </form>
     <?php
-    if (isset($usuario)&&isset($nombre)&&isset($apellido)&&isset($pegi)){
-        echo $usuario." ".$nombre." ".$apellido." ".$pegi;
+    if (isset($nombreUsuario)&&isset($contrasena)&&isset($fechaNacimiento)&&isset($descripcion)){
+        echo $nombreUsuario." ".$contrasena." ".$fechaNacimiento." ".$descripcion;
         $sql = "INSERT INTO usuarios (usuario, nombre, apellidos, fecha_nacimiento)
-            VALUES ('$usuario','$nombre','$apellido','$pegi')";
+            VALUES ('$nombreUsuario','$contrasena','$fechaNacimiento','$descripcion')";
         $conexion->query($sql);
     };
     ?>

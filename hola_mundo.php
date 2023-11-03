@@ -354,9 +354,9 @@
         </thead>
         <?php
         foreach ($arrayJuegos as $juego) {
-            list ($nombre, $consola, $puntuacion) = $juego;
+            list ($contrasena, $consola, $puntuacion) = $juego;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$consola</td>";
             echo "<td>$puntuacion</td>";
             echo "</tr>";
@@ -369,9 +369,9 @@
     $nuevo_juego = ["Minecraft", "PC", 20];
     array_push($arrayJuegos, $nuevo_juego);
     #ahora ordenando
-    $nombre = array_column($arrayJuegos, 0);
+    $contrasena = array_column($arrayJuegos, 0);
     $consola = array_column($arrayJuegos, 1);
-    array_multisort($consola, SORT_ASC, $nombre, SORT_ASC, $arrayJuegos);
+    array_multisort($consola, SORT_ASC, $contrasena, SORT_ASC, $arrayJuegos);
     ?>
     <table class="juegos" style>
         <caption>Jueguitos</caption>
@@ -384,9 +384,9 @@
         </thead>
         <?php
         foreach ($arrayJuegos as $juego) {
-            list ($nombre, $consola, $puntuacion) = $juego;
+            list ($contrasena, $consola, $puntuacion) = $juego;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$consola</td>";
             echo "<td>$puntuacion</td>";
             echo "</tr>";
@@ -413,9 +413,9 @@
         </thead>
         <?php
         foreach ($arrayJuegos as $juego) {
-            list ($nombre, $consola, $puntuacion, $stok) = $juego;
+            list ($contrasena, $consola, $puntuacion, $stok) = $juego;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$consola</td>";
             echo "<td>$puntuacion</td>";
             echo "<td>$stok</td>";
@@ -491,9 +491,9 @@
         </thead>
         <?php
         foreach ($arraySeries as $serie) {
-            list ($nombre, $plataforma, $temporadas) = $serie;
+            list ($contrasena, $plataforma, $temporadas) = $serie;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$plataforma</td>";
             echo "<td>$temporadas</td>";
             echo "</tr>";
@@ -502,9 +502,9 @@
     </table>
     <?php
     echo"<br>";
-    $nombre = array_column($arraySeries, 0);
+    $contrasena = array_column($arraySeries, 0);
     $temporadas = array_column($arraySeries, 2);
-    array_multisort($temporadas, SORT_ASC, $nombre, SORT_ASC, $arraySeries);
+    array_multisort($temporadas, SORT_ASC, $contrasena, SORT_ASC, $arraySeries);
     ?>
     <table class="Series" style>
         <caption>Series por temporadas</caption>
@@ -517,9 +517,9 @@
         </thead>
         <?php
         foreach ($arraySeries as $serie) {
-            list ($nombre, $plataforma, $temporadas) = $serie;
+            list ($contrasena, $plataforma, $temporadas) = $serie;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$plataforma</td>";
             echo "<td>$temporadas</td>";
             echo "</tr>";
@@ -528,9 +528,9 @@
     </table>
     <?php
     echo"<br>";
-    $nombre = array_column($arraySeries, 0);
+    $contrasena = array_column($arraySeries, 0);
     $plataforma = array_column($arraySeries, 1);
-    array_multisort($plataforma, SORT_ASC, $nombre, SORT_ASC, $arraySeries);
+    array_multisort($plataforma, SORT_ASC, $contrasena, SORT_ASC, $arraySeries);
     ?>
     <table class="Series" style>
         <caption>Series por plataforma</caption>
@@ -543,9 +543,9 @@
         </thead>
         <?php
         foreach ($arraySeries as $serie) {
-            list ($nombre, $plataforma, $temporadas) = $serie;
+            list ($contrasena, $plataforma, $temporadas) = $serie;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$plataforma</td>";
             echo "<td>$temporadas</td>";
             echo "</tr>";
@@ -595,9 +595,9 @@
         </thead>
         <?php
         foreach ($arrayEstudiantes as $estudiante) {
-            list ($nombre, $nota, $calificacion) = $estudiante;
+            list ($contrasena, $nota, $calificacion) = $estudiante;
             echo "<tr>";
-            echo "<td>$nombre</td>";
+            echo "<td>$contrasena</td>";
             echo "<td>$nota</td>";
             echo "<td>$calificacion</td>";
             echo "</tr>";

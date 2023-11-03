@@ -22,47 +22,47 @@
     
     #Validación ID
     if (strlen($temp_id_videojuego) == 0) {
-        $err_usuario = "Campo obligatorio";
+        $err_nombreProducto = "Campo obligatorio";
     } else {
         if (filter_var($temp_id_videojuego, FILTER_VALIDATE_INT) === FALSE) {
-            $err_usuario = "Introduce un número";
+            $err_nombreProducto = "Introduce un número";
         } else {
             if (strlen($temp_id_videojuego) > 8) {
-                $err_usuario = "Máximo 8 dígitos";
+                $err_nombreProducto = "Máximo 8 dígitos";
             } else{
-                $usuario = $temp_id_videojuego;
+                $nombreUsuario = $temp_id_videojuego;
             }
         }
     }
     #Validación Titulo
     if (strlen($temp_titulo) == 0) {
-        $err_nombre = "Campo obligatorio";
+        $err_precio = "Campo obligatorio";
     } else{
         if (strlen($temp_titulo) > 100) {
-            $err_nombre = "Máximo 100 caracteres";
+            $err_precio = "Máximo 100 caracteres";
         } else{
-            $nombre = $temp_titulo;
+            $contrasena = $temp_titulo;
         }
     }
     #Validación PEGI
     if (strlen($temp_pegi) == 0) {
-        $err_nacimiento = "Campo obligatorio";
+        $err_descripcion = "Campo obligatorio";
     } else{
         $pegis_validos = ['3','7','12','16','18'];
         if (!in_array($temp_pegi, $pegis_validos)){
-            $err_nacimiento = 'Loco, eso no esiste';
+            $err_descripcion = 'Loco, eso no esiste';
         } else{
-            $pegi = $temp_pegi;
+            $descripcion = $temp_pegi;
         }
     }
     #Validación Compañia
     if (strlen($temp_compania) == 0){
-        $err_apellido = "Campo obligatorio";
+        $err_cantidad = "Campo obligatorio";
     } else {
         if (strlen($temp_compania) > 100) {
-            $err_apellido = "Máximo 100 caracteres";
+            $err_cantidad = "Máximo 100 caracteres";
         } else{
-            $apellido = $temp_compania;
+            $fechaNacimiento = $temp_compania;
         }
     }
 
@@ -74,10 +74,10 @@
             <label class="form-label">ID Videojuego</label>
             <input class="form-control" type="text" name="id_videojuego">
             <?php
-            if (isset($err_usuario)) {
+            if (isset($err_nombreProducto)) {
                 ?>
                 <div>
-                    <?php echo $err_usuario ?>
+                    <?php echo $err_nombreProducto ?>
                 </div>
                 <?php
             }
@@ -87,10 +87,10 @@
             <label class="form-label">Título: </label>
             <input class="form-control" type="text" name="titulo">
             <?php
-            if (isset($err_nombre)) {
+            if (isset($err_precio)) {
                 ?>
                 <div>
-                    <?php echo $err_nombre ?>
+                    <?php echo $err_precio ?>
                 </div>
                 <?php
             }
@@ -107,10 +107,10 @@
                 <option value="18">PEGI 18</option>
             </select>
             <?php
-            if (isset($err_nacimiento)) {
+            if (isset($err_descripcion)) {
                 ?>
                 <div>
-                    <?php echo $err_nacimiento ?>
+                    <?php echo $err_descripcion ?>
                 </div>
                 <?php
             }
@@ -120,10 +120,10 @@
             <label class="form-label">Compañía</label>
             <input class="form-control" type="text" name="compania">
             <?php
-            if (isset($err_apellido)) {
+            if (isset($err_cantidad)) {
                 ?>
                 <div>
-                    <?php echo $err_apellido ?>
+                    <?php echo $err_cantidad ?>
                 </div>
                 <?php
             }
@@ -133,12 +133,12 @@
     </form>
 
     <?php
-    if (isset($usuario) && isset($nombre) && isset($pegi) && isset($apellido)) {
+    if (isset($nombreUsuario) && isset($contrasena) && isset($descripcion) && isset($fechaNacimiento)) {
         echo "exito!";
         $sql = "INSERT INTO videojuegos
         (id_videojuego, titulo, pegi, compania)
         VALUES
-        ($usuario, '$nombre','$pegi','$apellido')";
+        ($nombreUsuario, '$contrasena','$descripcion','$fechaNacimiento')";
         $conexion->query($sql);
     }    
     ?>

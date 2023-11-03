@@ -3,9 +3,9 @@
 $servidor="localhost";
     $nombreUsuario="root";
     $contrasena="medac";
-    $base_datos="bd_videojuegos";
+    $base_datos="db_login";
 
 
-    $conexion = new Mysqli($servidor,$nombreUsuario,$contrasena,$base_datos)
+    $_conexion = new Mysqli($servidor,$nombreUsuario,$contrasena,$base_datos)
         or die("Error de conexion");
 ?>

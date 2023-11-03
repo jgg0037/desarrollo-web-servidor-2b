@@ -1,10 +1,10 @@
 <?php
     $servidor="localhost";
-    $usuario="root";
+    $nombreUsuario="root";
     $contrasena="medac";
     $base_datos="usuarios";
 
 
-    $conexion = new Mysqli($servidor,$usuario,$contrasena,$base_datos)
+    $conexion = new Mysqli($servidor,$nombreUsuario,$contrasena,$base_datos)
         or die("Error de conexion");
 ?>

@@ -33,9 +33,9 @@
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             if (isset($_GET["f"])) {
                 if ($_GET["f"] == "iva") {
-                    $precio = (float) $_GET["precio"];
+                    $contrasena = (float) $_GET["precio"];
                     $iva = $_GET["iva"];
-                    echo "<h3>EL precio con iva es: ".precioConIva($precio, $iva)."</h3>";
+                    echo "<h3>EL precio con iva es: ".precioConIva($contrasena, $iva)."</h3>";
                 }
             }
         }
