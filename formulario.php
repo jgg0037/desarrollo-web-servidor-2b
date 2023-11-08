@@ -19,10 +19,10 @@
     <?php
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $contrasena = $_POST["nombre"];
+        $precio = $_POST["nombre"];
         $apellidos = $_POST["apellidos"];
         $edad = (int) $_POST["edad"];
-        echo "<h2>$contrasena $apellidos $edad</h2>";
+        echo "<h2>$precio $apellidos $edad</h2>";
     }
 
     ?>

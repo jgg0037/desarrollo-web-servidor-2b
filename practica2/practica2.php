@@ -35,10 +35,10 @@
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             if (isset($_GET["secret"])) {
                 if ($_GET["secret"] == "secret") {
-                    $fechaNacimiento = (float) $_GET["cantidad"];
+                    $cantidad = (float) $_GET["cantidad"];
                     $origen = $_GET["origen"];
                     $destino = $_GET["destino"];
-                    echo "<h2>Conversión: " . cambiarDivisa($fechaNacimiento, $origen, $destino) . "</h2>";
+                    echo "<h2>Conversión: " . cambiarDivisa($cantidad, $origen, $destino) . "</h2>";
                 }
             }
         }

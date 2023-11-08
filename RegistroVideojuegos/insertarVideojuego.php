@@ -22,15 +22,15 @@
     
     #Validación ID
     if (strlen($temp_id_videojuego) == 0) {
-        $err_usuario = "Campo obligatorio";
+        $err_nombreProducto = "Campo obligatorio";
     } else {
         if (filter_var($temp_id_videojuego, FILTER_VALIDATE_INT) === FALSE) {
-            $err_usuario = "Introduce un número";
+            $err_nombreProducto = "Introduce un número";
         } else {
             if (strlen($temp_id_videojuego) > 8) {
-                $err_usuario = "Máximo 8 dígitos";
+                $err_nombreProducto = "Máximo 8 dígitos";
             } else{
-                $nombreUsuario = $temp_id_videojuego;
+                $nombreProducto = $temp_id_videojuego;
             }
         }
     }
@@ -41,28 +41,28 @@
         if (strlen($temp_titulo) > 100) {
             $err_precio = "Máximo 100 caracteres";
         } else{
-            $contrasena = $temp_titulo;
+            $precio = $temp_titulo;
         }
     }
     #Validación PEGI
     if (strlen($temp_pegi) == 0) {
-        $err_nacimiento = "Campo obligatorio";
+        $err_descripcion = "Campo obligatorio";
     } else{
         $pegis_validos = ['3','7','12','16','18'];
         if (!in_array($temp_pegi, $pegis_validos)){
-            $err_nacimiento = 'Loco, eso no esiste';
+            $err_descripcion = 'Loco, eso no esiste';
         } else{
-            $descripcion = $temp_pegi;
+            $cantidad = $temp_pegi;
         }
     }
     #Validación Compañia
     if (strlen($temp_compania) == 0){
-        $err_contrasena = "Campo obligatorio";
+        $err_cantidad = "Campo obligatorio";
     } else {
         if (strlen($temp_compania) > 100) {
-            $err_contrasena = "Máximo 100 caracteres";
+            $err_cantidad = "Máximo 100 caracteres";
         } else{
-            $fechaNacimiento = $temp_compania;
+            $cantidad = $temp_compania;
         }
     }
 
@@ -74,10 +74,10 @@
             <label class="form-label">ID Videojuego</label>
             <input class="form-control" type="text" name="id_videojuego">
             <?php
-            if (isset($err_usuario)) {
+            if (isset($err_nombreProducto)) {
                 ?>
                 <div>
-                    <?php echo $err_usuario ?>
+                    <?php echo $err_nombreProducto ?>
                 </div>
                 <?php
             }
@@ -107,10 +107,10 @@
                 <option value="18">PEGI 18</option>
             </select>
             <?php
-            if (isset($err_nacimiento)) {
+            if (isset($err_descripcion)) {
                 ?>
                 <div>
-                    <?php echo $err_nacimiento ?>
+                    <?php echo $err_descripcion ?>
                 </div>
                 <?php
             }
@@ -120,10 +120,10 @@
             <label class="form-label">Compañía</label>
             <input class="form-control" type="text" name="compania">
             <?php
-            if (isset($err_contrasena)) {
+            if (isset($err_cantidad)) {
                 ?>
                 <div>
-                    <?php echo $err_contrasena ?>
+                    <?php echo $err_cantidad ?>
                 </div>
                 <?php
             }
@@ -133,12 +133,12 @@
     </form>
 
     <?php
-    if (isset($nombreUsuario) && isset($contrasena) && isset($descripcion) && isset($fechaNacimiento)) {
+    if (isset($nombreProducto) && isset($precio) && isset($cantidad) && isset($cantidad)) {
         echo "exito!";
         $sql = "INSERT INTO videojuegos
         (id_videojuego, titulo, pegi, compania)
         VALUES
-        ($nombreUsuario, '$contrasena','$descripcion','$fechaNacimiento')";
+        ($nombreProducto, '$precio','$cantidad','$cantidad')";
         $conexion->query($sql);
     }    
     ?>

@@ -1,12 +1,12 @@
 <?php
 
 $servidor="localhost";
-    $nombreUsuario="root";
+    $nombreProducto="root";
     $contrasena="medac";
     $base_datos="bd_amazon";
 
 
-    $conexion = new Mysqli($servidor,$nombreUsuario,$contrasena,$base_datos)
+    $conexion = new Mysqli($servidor,$nombreProducto,$contrasena,$base_datos)
         or die("Error de conexion");
 
 function depurar(string $entrada) : string{

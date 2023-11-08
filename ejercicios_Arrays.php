@@ -48,9 +48,9 @@ $arrayComponentes = [
     ["SSD 1TB", 4],
     ["RAM Corsair 16GB", 7]
 ];
-$contrasena = array_column($arrayComponentes, 0);
-$contrasena = array_column($arrayComponentes, 1);
-array_multisort($contrasena, SORT_ASC, $contrasena, SORT_ASC, $arrayComponentes);
+$precio = array_column($arrayComponentes, 0);
+$precio = array_column($arrayComponentes, 1);
+array_multisort($precio, SORT_ASC, $precio, SORT_ASC, $arrayComponentes);
 ?>
 <table class="componentes" style>
     <caption>Componentes</caption>
@@ -62,10 +62,10 @@ array_multisort($contrasena, SORT_ASC, $contrasena, SORT_ASC, $arrayComponentes)
     </thead>
     <?php
     foreach ($arrayComponentes as $componentes) {
-        list ($contrasena, $contrasena) = $componentes;
+        list ($precio, $precio) = $componentes;
         echo "<tr>";
-        echo "<td>$contrasena</td>";
-        echo "<td>$contrasena</td>";
+        echo "<td>$precio</td>";
+        echo "<td>$precio</td>";
         echo "</tr>";
     };
     ?>
@@ -109,10 +109,10 @@ for ($i=0; $i < count($arrayComponentes); $i++) {
     </thead>
     <?php
     foreach ($arrayComponentes as $componentes) {
-        list ($contrasena, $contrasena, $stock, $precioTotal) = $componentes;
+        list ($precio, $precio, $stock, $precioTotal) = $componentes;
         echo "<tr>";
-        echo "<td>$contrasena</td>";
-        echo "<td>$contrasena</td>";
+        echo "<td>$precio</td>";
+        echo "<td>$precio</td>";
         echo "<td>$stock</td>";
         echo "<td>$precioTotal</td>";
         echo "</tr>";
