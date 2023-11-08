@@ -66,10 +66,11 @@
                 $imgSize = $_FILES["imgProducto"]["size"];
                 if ($imgSize > 5242880) {
                     $err_imgProducto = "La imagen no puede pesar más de 5MB";
-                }
+                } else {
                 $rutaTemp = $_FILES["imgProducto"]["tmp_name"];
                 $rutaImg="img/" . $imgName;
                 move_uploaded_file($rutaTemp, $rutaImg);
+                }
             }
         }
     }
