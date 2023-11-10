@@ -12,11 +12,18 @@
 <body>
     <?php
     session_start();
-    $usuario = $_SESSION["usuario"];
+    if (isset($_SESSION["usuario"])) {
+        $usuario = $_SESSION["usuario"];
+    }
+    
     ?>
     <div class="container">
         <h1>Esta es la página principal</h1>
-        <h2>Bienvenid@ <?php echo $usuario; ?></h2>
+        <h2>Bienvenid@ <?php 
+        if (isset($usuario)) {
+            echo $usuario;
+        } ?>
+        </h2>
     </div>
 
     <?php
@@ -28,8 +35,9 @@
         array_push($productos, $nuevo_productos);
     }
     ?>
-
+    
     <div class="container">
+        <a href="cerrarSesion.php" style="float: right;">Cerrar Sesion</a>
         <h1>Listado de productos</h1>
         <table class="table">
             <thead class="cabecera">
