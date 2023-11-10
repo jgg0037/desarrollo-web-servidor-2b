@@ -10,6 +10,14 @@
     
 </head>
 <body>
+    <?php
+    session_start();
+    $usuario = $_SESSION["usuario"];
+    ?>
+    <div class="container">
+        <h1>Esta es la página principal</h1>
+        <h2>Bienvenid@ <?php echo $usuario; ?></h2>
+    </div>
 
     <?php
     $sql = "SELECT * FROM productos";
