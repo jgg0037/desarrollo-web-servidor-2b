@@ -366,8 +366,8 @@
     <?php
     echo "<br><br>";
     #meter un juego en array
-    $nuevo_juego = ["Minecraft", "PC", 20];
-    array_push($arrayJuegos, $nuevo_juego);
+    $nuevo_productos = ["Minecraft", "PC", 20];
+    array_push($arrayJuegos, $nuevo_productos);
     #ahora ordenando
     $precio = array_column($arrayJuegos, 0);
     $consola = array_column($arrayJuegos, 1);

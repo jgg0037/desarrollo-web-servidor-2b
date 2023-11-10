@@ -27,7 +27,7 @@
     Recorre con un foreach el array
     muestralos en una tabla
     */
-    $videojuegos=[$videojuego1,$videojuego2,$videojuego3];
+    $productos=[$videojuego1,$videojuego2,$videojuego3];
     ?>
 
     <table class="table table-dark">
@@ -41,7 +41,7 @@
         </thead>
         <tbody>
         <?php
-        foreach ($videojuegos as $videojuego) {
+        foreach ($productos as $videojuego) {
             echo "<tr>";
             echo "<td>".$videojuego->id_videojuego."</td>";
             echo "<td>".$videojuego->titulo."</td>";
