@@ -43,12 +43,12 @@
             </thead>
             <tbody>
             <?php
-            foreach ($productos as $videojuego) {
+            foreach ($productos as $producto) {
                 echo "<tr>";
-                echo "<td>".$videojuego->id_videojuego."</td>";
-                echo "<td>".$videojuego->titulo."</td>";
-                echo "<td>".$videojuego->compania."</td>";
-                echo "<td>".$videojuego->pegi."</td>";
+                echo "<td>".$producto->id_videojuego."</td>";
+                echo "<td>".$producto->titulo."</td>";
+                echo "<td>".$producto->compania."</td>";
+                echo "<td>".$producto->pegi."</td>";
                 echo "</tr>";
             }
             ?>

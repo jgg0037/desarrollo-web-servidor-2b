@@ -17,15 +17,19 @@
         $usuario = $_SESSION["usuario"];
     }
     ?>
-    <?php 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<div class="container">
+        <h1>Esta es tu cesta, <?php 
+        if (isset($usuario)) {
+            echo $usuario;
+        } ?></h1>
+    </div>
 
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /*Obtener ID de producto*/
         $id_producto = $_POST["id_producto"];
         echo"<p>El producto seleccionado es $id_producto</p>";
-        
-        $cantidad = 1;
-
+    
         /*Obtener ID cesta del usuario logeado*/
         $sql = "SELECT idCesta FROM cestas where usuario = '$usuario'";
         $resultado = $conexion -> query($sql);
@@ -38,53 +42,21 @@
         $resultado = $conexion -> query($sql) -> fetch_assoc();
         error_reporting(0);
         if ($resultado["cantidad"]) {
-            $cantidad = $resultado["cantidad"] + 1;
+            $cantidad = $resultado["cantidad"] - 1;
             $sql = "UPDATE productoscestas SET cantidad = $cantidad where idProducto = '$id_producto'";
             $conexion -> query($sql);
         } else{
-            $sql = "INSERT INTO productoscestas (idProducto, idCesta, cantidad)
-                    VALUES ($id_producto, $id_cesta, $cantidad)";
+            $sql = "DELETE FROM productoscestas WHERE idProducto = '$id_producto'";
             $conexion -> query($sql);
         }
         error_reporting(-1);
-
-        
-        /* if ($arrayproductocesta["idProducto"] == $id_producto) {
-            $sql = "UPDATE productoscestas SET cantidad = ($cantidad +1) where idProducto = '$id_producto'";
-            $conexion -> query($sql);
-            echo "$id_producto";
-        }else{
-            echo "$id_producto";
-            $sql = "INSERT INTO productoscestas (idProducto, idCesta, cantidad)
-                    VALUES ($id_producto, $id_cesta, $cantidad)";
-            $conexion -> query($sql);
-        } */
-    }
-    ?>
-    
-    <div class="container">
-        <h1>Esta es la página principal</h1>
-        <h2>Bienvenid@ <?php 
-        if (isset($usuario)) {
-            echo $usuario;
-        } ?>
-        </h2>
-    </div>
-
-    <?php
-    $sql = "SELECT * FROM productos";
-    $resultado = $conexion ->query($sql);
-    $productos = [];
-    while ($row = $resultado -> fetch_assoc()) {
-        $nuevo_productos = new Producto($row["idProducto"], $row["nombreProducto"], $row["precio"],$row["descripcion"],$row["cantidad"], $row["imagen"]);
-        array_push($productos, $nuevo_productos);
     }
     ?>
     
     <div class="container">
         <a href="cerrarSesion.php" style="float: right;">Cerrar Sesion</a>
         <br>
-        <a href="mostrarCesta.php" style="float: right;">Mi Cesta</a>
+        <a href="mostrarProductos.php" style="float: right;">Volver a la tienda</a>
         <h1>Listado de productos</h1>
         <table class="table">
             <thead class="cabecera">
@@ -92,7 +64,6 @@
                     <th>ID Producto</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Descripción</th>
                     <th>Cantidad</th>
                     <th>Imagen</th>
                     <th></th>
@@ -100,23 +71,30 @@
             </thead>
             <tbody>
             <?php
-            foreach ($productos as $producto) { ?>
+                $sql = "SELECT c.idProducto, c.cantidad, p.idProducto, p.nombreProducto, p.precio, p.imagen
+                FROM productosCestas c
+                INNER JOIN productos p
+                ON c.idProducto = p.idProducto";
+                $resultado = $conexion ->query($sql);
+                
+                
+                foreach ($resultado as $producto) {
+                ?>
                 <tr>
-                <td><?php echo $producto->id_producto ?></td>
-                <td><?php echo $producto->nombreProducto ?></td>
-                <td><?php echo $producto->precio ?></td>
-                <td><?php echo $producto->descripcion ?></td>
-                <td><?php echo $producto->cantidad ?></td>
-                <td><img <?php echo "src='".$producto->imagen."' width='70' height='50'"?>></td>
+                <td><?php echo $producto["idProducto"]?></td>
+                <td><?php echo $producto["nombreProducto"]?></td>
+                <td><?php echo $producto["precio"]?></td>
+                <td><?php echo $producto["cantidad"]?></td>
+                <td><img <?php echo "src='".$producto["imagen"]."' width='70' height='50'"?>></td>
                 <td>
                     <form action="" method="post">
-                        <input type="hidden" name="id_producto" value="<?php echo $producto -> id_producto ?>">
-                        <input class="btn btn-danger" type="submit" value="Añadir a cesta">
+                        <input type="hidden" name="id_producto" value="<?php echo $producto["idProducto"] ?>">
+                        <input class="btn btn-danger" type="submit" value="Borrar">
                     </form>
                 </td>
                 </tr>
                 <?php
-            }
+                }
             ?>
             </tbody>
         </table>

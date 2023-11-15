@@ -30,10 +30,10 @@
             $_SESSION["usuario"] = $usuario;
             header('location: mostrarProductos.php');
         } else {
-            echo "Usuario o contraseña erroneo";
+            $error_inicio  = "<p style='color:red;'>Usuario o contraseña erroneo</p>";
         }
         } else {
-            echo "Usuario o contraseña erroneo";
+            $error_inicio  = "<p style='color:red;'>Usuario o contraseña erroneo</p>";
         }
     }   
     ?>
@@ -42,7 +42,7 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form action="" method="post">
         <h3>Login Here</h3>
 
         <label class="form-label">Usuario</label>
@@ -50,6 +50,8 @@
 
         <label class="form-label">Contraseña</label>
         <input class="form-control" type="password"name="contrasena">
+
+        <?php if(isset($error_inicio)){echo $error_inicio;}; ?>
 
         <input type="submit" class="btn btn-primary" value="Iniciar Sesion">
     </form>
