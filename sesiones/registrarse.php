@@ -11,8 +11,8 @@
     <?php 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $usuario = $_POST["usuario"];
-        $precio = $_POST["contrasena"];
-        $contrasena_cifrada = password_hash($precio, PASSWORD_DEFAULT);
+        $contrasenaUsuario = $_POST["contrasena"];
+        $contrasena_cifrada = password_hash($contrasenaUsuario, PASSWORD_DEFAULT);
         $sql = "INSERT INTO usuarios VALUES('$usuario', '$contrasena_cifrada')";
         $_conexion -> query($sql);
     }   

@@ -41,7 +41,7 @@
         if (strlen($temp_titulo) > 100) {
             $err_precio = "Máximo 100 caracteres";
         } else{
-            $precio = $temp_titulo;
+            $contrasenaUsuario = $temp_titulo;
         }
     }
     #Validación PEGI
@@ -57,10 +57,10 @@
     }
     #Validación Compañia
     if (strlen($temp_compania) == 0){
-        $err_cantidad = "Campo obligatorio";
+        $err_contrasenia = "Campo obligatorio";
     } else {
         if (strlen($temp_compania) > 100) {
-            $err_cantidad = "Máximo 100 caracteres";
+            $err_contrasenia = "Máximo 100 caracteres";
         } else{
             $cantidad = $temp_compania;
         }
@@ -120,10 +120,10 @@
             <label class="form-label">Compañía</label>
             <input class="form-control" type="text" name="compania">
             <?php
-            if (isset($err_cantidad)) {
+            if (isset($err_contrasenia)) {
                 ?>
                 <div>
-                    <?php echo $err_cantidad ?>
+                    <?php echo $err_contrasenia ?>
                 </div>
                 <?php
             }
@@ -133,12 +133,12 @@
     </form>
 
     <?php
-    if (isset($nombreProducto) && isset($precio) && isset($cantidad) && isset($cantidad)) {
+    if (isset($nombreProducto) && isset($contrasenaUsuario) && isset($cantidad) && isset($cantidad)) {
         echo "exito!";
         $sql = "INSERT INTO videojuegos
         (id_videojuego, titulo, pegi, compania)
         VALUES
-        ($nombreProducto, '$precio','$cantidad','$cantidad')";
+        ($nombreProducto, '$contrasenaUsuario','$cantidad','$cantidad')";
         $conexion->query($sql);
     }    
     ?>

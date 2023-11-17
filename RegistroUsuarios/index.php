@@ -41,16 +41,16 @@
             if(!preg_match($regex,$tmp_precio)){
                 $err_precio="De 2 a 20 caracteres empezando por mayuscula";
             }else{
-                $precio=$tmp_precio;
+                $contrasenaUsuario=$tmp_precio;
             }
         }
         $tmp_cantidad=depurar($_POST["apellido"]);
         if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Rellena el campo";
+            $err_contrasenia="Rellena el campo";
         }else{
             $regex="/^[A-ZÑ][a-zA-ZñÑ\ ]{1,39}$/";
             if(!preg_match($regex,$tmp_cantidad)){
-                $err_cantidad="De 2 a 40 caracteres empezando por mayuscula ";
+                $err_contrasenia="De 2 a 40 caracteres empezando por mayuscula ";
             }else{
                 $cantidad=$tmp_cantidad;
             }
@@ -87,7 +87,7 @@
         <label>Apellido: </label>
         <input type="text" name="apellido">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasenia)) echo $err_contrasenia;
         ?><br><br>
         <label>Fecha de nacimiento: </label>
         <input type="date" name="nacimiento">
@@ -97,10 +97,10 @@
         <input type="submit" value="Enviar">
     </form>
     <?php
-    if (isset($nombreProducto)&&isset($precio)&&isset($cantidad)&&isset($cantidad)){
-        echo $nombreProducto." ".$precio." ".$cantidad." ".$cantidad;
+    if (isset($nombreProducto)&&isset($contrasenaUsuario)&&isset($cantidad)&&isset($cantidad)){
+        echo $nombreProducto." ".$contrasenaUsuario." ".$cantidad." ".$cantidad;
         $sql = "INSERT INTO usuarios (usuario, nombre, apellidos, fecha_nacimiento)
-            VALUES ('$nombreProducto','$precio','$cantidad','$cantidad')";
+            VALUES ('$nombreProducto','$contrasenaUsuario','$cantidad','$cantidad')";
         $conexion->query($sql);
     };
     ?>

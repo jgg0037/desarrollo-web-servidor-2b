@@ -30,7 +30,7 @@
             if($tmp_precio < 0 || $tmp_precio > 99999.99){
                 $err_precio="Máximo 99999.99, debe ser mayor a 0";
             }else{
-                $precio=$tmp_precio;
+                $contrasenaUsuario=$tmp_precio;
             }
         }
         $tmp_descripcion=depurar($_POST["descripcion"]);
@@ -46,10 +46,10 @@
         }
         $tmp_cantidad=depurar($_POST["cantidad"]);
         if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Campo obligatorio";
+            $err_contrasenia="Campo obligatorio";
         }else{
             if($tmp_cantidad < 0 || $tmp_cantidad > 99999){
-                $err_cantidad="Min. 0, max. 99999";
+                $err_contrasenia="Min. 0, max. 99999";
             }else{
                 $cantidad=$tmp_cantidad;
             }
@@ -97,7 +97,7 @@
         <label class="form-label">Cantidad: </label>
         <input type="text" name="cantidad" class="form-control">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasenia)) echo $err_contrasenia;
         ?><br><br>
         <label class="form-label">Imagen del producto: </label>
         <input type="file" name="imgProducto" class="form-control">
@@ -107,10 +107,10 @@
         <input type="submit" value="Enviar" class="btn btn-primary">
     </form>
     <?php
-    if (isset($nombreProducto)&&isset($precio)&&isset($cantidad)&&isset($descripcion)&&isset($rutaImg)){
+    if (isset($nombreProducto)&&isset($contrasenaUsuario)&&isset($cantidad)&&isset($descripcion)&&isset($rutaImg)){
         echo "<h2>Producto registrado con éxito!</h2>";
         $sql = "INSERT INTO productos (nombreProducto, precio, cantidad, descripcion, imagen)
-            VALUES ('$nombreProducto','$precio','$cantidad','$descripcion','$rutaImg')";
+            VALUES ('$nombreProducto','$contrasenaUsuario','$cantidad','$descripcion','$rutaImg')";
         $conexion->query($sql);
     };
     ?>

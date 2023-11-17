@@ -6,10 +6,10 @@ function depurar(string $entrada) : string{
 }
 $servidor="localhost";
     $nombreProducto="root";
-    $precio="medac";
+    $contrasenaUsuario="medac";
     $base_datos="bd_videojuegos";
 
 
-    $conexion = new Mysqli($servidor,$nombreProducto,$precio,$base_datos)
+    $conexion = new Mysqli($servidor,$nombreProducto,$contrasenaUsuario,$base_datos)
         or die("Error de conexion");
 ?>

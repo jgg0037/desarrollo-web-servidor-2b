@@ -12,7 +12,7 @@
     <?php 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $usuario = $_POST["usuario"];
-        $precio = $_POST["contrasena"];
+        $contrasenaUsuario = $_POST["contrasena"];
 
         $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
         $resultado = $conexion -> query($sql);
@@ -24,7 +24,7 @@
         }
         
 
-        $acceso_valido = password_verify($precio, $contrasena_cifrada);
+        $acceso_valido = password_verify($contrasenaUsuario, $contrasena_cifrada);
         if($acceso_valido){
             session_start();
             $_SESSION["usuario"] = $usuario;

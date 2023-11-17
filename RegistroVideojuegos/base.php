@@ -29,16 +29,16 @@
             if(!preg_match($regex,$tmp_precio)){
                 $err_precio="De 1 a 100 caracteres";
             }else{
-                $precio=$tmp_precio;
+                $contrasenaUsuario=$tmp_precio;
             }
         }
         $tmp_cantidad=depurar($_POST["compania"]);
         if(strlen($tmp_cantidad)==0){
-            $err_cantidad="Rellena el campo";
+            $err_contrasenia="Rellena el campo";
         }else{
             $regex="/^[a-zA-Z0-9_ñÑ]{1,50}$/";
             if(!preg_match($regex,$tmp_cantidad)){
-                $err_cantidad="De 1 a 50 caracteres";
+                $err_contrasenia="De 1 a 50 caracteres";
             }else{
                 $cantidad=$tmp_cantidad;
             }
@@ -75,7 +75,7 @@
         <label>Compañía: </label>
         <input type="text" name="compania">
         <?php
-        if (isset($err_cantidad)) echo $err_cantidad;
+        if (isset($err_contrasenia)) echo $err_contrasenia;
         ?><br><br>
         <label>Pegi: </label><br>
         <input type="radio" id="opcion1" name="opcion" value="3">
@@ -90,10 +90,10 @@
         <input type="submit" value="Enviar">
     </form>
     <?php
-    if (isset($nombreProducto)&&isset($precio)&&isset($cantidad)&&isset($cantidad)){
-        echo $nombreProducto." ".$precio." ".$cantidad." ".$cantidad;
+    if (isset($nombreProducto)&&isset($contrasenaUsuario)&&isset($cantidad)&&isset($cantidad)){
+        echo $nombreProducto." ".$contrasenaUsuario." ".$cantidad." ".$cantidad;
         $sql = "INSERT INTO videojuegos (id_videojuego, titulo, pegi, compania)
-            VALUES ('$nombreProducto','$precio','$cantidad','$cantidad')";
+            VALUES ('$nombreProducto','$contrasenaUsuario','$cantidad','$cantidad')";
         $conexion->query($sql);
     };
     ?>
