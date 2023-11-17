@@ -42,7 +42,9 @@
             $anios=$diferencia->y;
             if($anios<12){
                 $err_descripcion="Eres menor ";
-            }else{
+            }elseif ($anios>120) {
+                $err_descripcion="Eres viejo ";
+            } else{
                 $nacimiento=$tmp_nacimiento;
             }
         }
