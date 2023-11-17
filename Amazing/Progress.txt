@@ -1,0 +1,10 @@
+Trabajo Amazon:
+1- Formulario para la creación de productos y su inserción en la base de datos. --Done--
+2- Formulario para el registro de usuarios y su inserción en la base de datos. --Done--
+3- Clase producto.php que incluya un constructor. --Done--
+4- Página principal donde se muestre un listado con todos los productos disponibles. --Done--
+5- Formulario que permita a los usuarios iniciar sesión en la página --Done--
+6- Crear rol ADMIN y limitar funcionalidades
+7- Añadir  un botón para añadir productos a la cesta. --Done--
+8- Página donde se muestren los productos que hay en la cesta del usuario. --Done--
+9- Botón para finalizar el pedido y realizar la compra.
