@@ -14,10 +14,10 @@
         <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
 
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="mostrarProductos.php">
                     <img src="./img/logoAmazing.jfif" alt="Bootstrap" width="75" height="75">
                 </a>
-                <a class="navbar-brand" href="#">Amazing</a>
+                <a class="navbar-brand" href="mostrarProductos.php">Amazing</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,13 +25,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="mostrarProductos.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cesta</a>
+                            <a class="nav-link" href="mostrarCesta.php">Cesta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pedidos</a>
+                            <a class="nav-link" href="pedidos.php">Pedidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Añadir producto</a>
