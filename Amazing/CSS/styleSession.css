@@ -1,6 +1,6 @@
 body{
     background-color: #080710;
-    background-image: url(../img/ratonGaming.png);
+    background-image: url(../img/background.jfif);
 }
 .background{
     width: 430px;
@@ -15,6 +15,18 @@ body{
     width: 200px;
     position: absolute;
     border-radius: 50%;
+}
+.banner{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    color: #081720;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    margin-top: 100px;
 }
 
 form{

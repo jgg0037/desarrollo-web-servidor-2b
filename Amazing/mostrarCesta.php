@@ -7,9 +7,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <?php require "conexion.php"; ?>
     <?php require "objetos.php"; ?>
-    
+    <link rel="stylesheet" href="CSS/styleMain.css">
 </head>
 <body>
+<header class="header">
+        <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./img/logoAmazing.jfif" alt="Bootstrap" width="75" height="75">
+                </a>
+                <a class="navbar-brand" href="#">Amazing</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cesta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Añadir producto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     <?php
     /*Mantener Sesion*/
     session_start();
@@ -17,12 +48,22 @@
         $usuario = $_SESSION["usuario"];
     }
     ?>
-<div class="container">
-        <h1>Esta es tu cesta, <?php 
-        if (isset($usuario)) {
-            echo $usuario;
-        } ?></h1>
+    <div class="row welcome">
+    <div class="col">
+    <h1>Tu cesta</h1>
     </div>
+    <div class="col">
+    <?php 
+            if (isset($usuario)) {
+                echo "<h4>Aquí puedes ver tu cesta $usuario</h4>";
+                echo"<h4><a href='cerrarSesion.php'>Cerrar Sesion</a></h4>";
+            } else{
+                echo "<h4>Parece que no has iniciado sesión</h4>";
+                echo"<h4><a href='iniciarSesion.php'>Iniciar Sesion</a></h4>";
+            }
+            ?>
+    </div>
+        </div>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -54,9 +95,7 @@
     ?>
     
     <div class="container">
-        <a href="cerrarSesion.php" style="float: right;">Cerrar Sesion</a>
-        <br>
-        <a href="mostrarProductos.php" style="float: right;">Volver a la tienda</a>
+        <h4><a href="mostrarProductos.php" style="float: right;">Volver a la tienda</a></h4>
         <h1>Listado de productos</h1>
         <table class="table">
             <thead class="cabecera">
