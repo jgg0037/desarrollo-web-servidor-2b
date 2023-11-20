@@ -8,3 +8,20 @@ Trabajo Amazon:
 7- Añadir  un botón para añadir productos a la cesta. --Done--
 8- Página donde se muestren los productos que hay en la cesta del usuario. --Done--
 9- Botón para finalizar el pedido y realizar la compra.
+
+
+
+Despliegue:
+Tema 1
+2, 2.2 , 2.2.2, 2.2.3, 3, 4, 6
+Tema 2
+2, 3, 5, 5.3, 5.4, 6
+Tema 3
+2, 2.1, 2.4, 2.5, 2.6, 2.7, 
+Tema 4
+2, 3, 5, 6, 8
+Tema 5
+2 entero, 5, 5.2 6, 6.1, 6.2, 
+Tema 6
+2, 5, 6entero, 
+Tema 7

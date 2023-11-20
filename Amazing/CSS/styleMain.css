@@ -1,6 +1,7 @@
+
 .welcome{
     height: 90px;
-    background-color: rgb(236, 255, 255);
+    background-color: #CBDFE0;
 }
 .welcome h1{
     margin-left: 20px;
@@ -15,4 +16,10 @@
 }
 .container h4{
     text-align: right;  
+}
+.btn{
+    background-color: #93C3C7;
+}
+.btn:hover{
+    background-color: #669599;
 }

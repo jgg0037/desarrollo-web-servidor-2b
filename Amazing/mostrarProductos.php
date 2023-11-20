@@ -9,7 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <?php require "conexion.php"; ?>
     <?php require "objetos.php"; ?>
-    <link rel="stylesheet" href="CSS/styleMain.css">
+    <link rel="stylesheet" href="./CSS/styleMain.css">
 </head>
 
 <body>
@@ -159,7 +159,7 @@
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="id_producto" value="<?php echo $producto->id_producto ?>">
-                                <input class="btn btn-danger" type="submit" value="Añadir a cesta">
+                                <input class="btn" type="submit" value="Añadir a cesta">
                             </form>
                         </td>
                     </tr>

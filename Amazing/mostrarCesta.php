@@ -12,7 +12,6 @@
 <body>
 <header class="header">
         <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-
             <div class="container-fluid">
                 <a class="navbar-brand" href="mostrarProductos.php">
                     <img src="./img/logoAmazing.jfif" alt="Bootstrap" width="75" height="75">
@@ -128,7 +127,7 @@
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="id_producto" value="<?php echo $producto["idProducto"] ?>">
-                        <input class="btn btn-danger" type="submit" value="Borrar">
+                        <input class="btn" type="submit" value="Borrar">
                     </form>
                 </td>
                 </tr>
@@ -137,6 +136,7 @@
             ?>
             </tbody>
         </table>
+        <a href="pedidos.php"><button class="btn">Confirmar pedido</button></a>
     </div>
 
 
