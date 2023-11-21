@@ -11,6 +11,16 @@
 <body>
     
 <?php
+
+    /*Comprobar sesion iniciada con admin*/
+    session_start();
+    if ($_SESSION["rol"] !== 'admin') {
+        header('Location: iniciarSesion.php');
+        exit;
+    }
+
+
+
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $tmp_nombreProducto=depurar($_POST["nombreProducto"]);
         if(strlen($tmp_nombreProducto)==0){

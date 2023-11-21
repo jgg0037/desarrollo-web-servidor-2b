@@ -28,6 +28,7 @@
         if($acceso_valido){
             session_start();
             $_SESSION["usuario"] = $usuario;
+            $_SESSION["rol"] = $fila["rol"];
             header('location: mostrarProductos.php');
         } else {
             $error_inicio  = "<p style='color:red;'>Usuario o contraseña erroneo</p>";
