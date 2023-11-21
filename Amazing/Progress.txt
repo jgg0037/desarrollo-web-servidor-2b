@@ -25,3 +25,51 @@ Tema 5
 Tema 6
 2, 5, 6entero, 
 Tema 7
+
+
+CREATE SCHEMA bd_amazon;
+USE bd_amazon;
+CREATE TABLE productosproductos (
+	idProducto INT(8) PRIMARY KEY AUTO_INCREMENT,
+    nombreProducto VARCHAR(40) NOT NULL,
+    precio NUMERIC(5, 2) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    cantidad NUMERIC(5) NOT NULL
+);
+CREATE TABLE usuarios (
+	usuario VARCHAR(12) PRIMARY KEY,
+    contrasena VARCHAR(255) NOT NULL,
+    fechaNacimiento DATE NOT NULL
+);
+CREATE TABLE cestas (
+	idCesta INT(8) PRIMARY KEY AUTO_INCREMENT,
+    usuario VARCHAR(12) NOT NULL,
+    precioTotal NUMERIC(5, 2) NOT NULL,
+    CONSTRAINT fk_cestas_usuarios FOREIGN KEY (usuario) REFERENCES usuarios(usuario)
+);
+CREATE TABLE productosCestas (
+	idProducto INT(8) NOT NULL,
+    idCesta INT(8) NOT NULL,
+    cantidad NUMERIC(2) NOT NULL,
+    CONSTRAINT pk_productosCestas PRIMARY KEY (idProducto, idCesta),
+    CONSTRAINT fk_productosCestas_productos FOREIGN KEY (idProducto) REFERENCES productos(idProducto),
+    CONSTRAINT fk_productosCestas_cestas FOREIGN KEY (idCesta) REFERENCES cestas(idCesta)
+);
+
+create schema db_login;
+use db_login;
+create table usuarios (
+	usuario varchar(20) primary key,
+    contrasena varchar(255) not null
+);
+select * from usuarios;
+select * from productos;
+select * from cestas;
+select * from productoscestas;
+alter table cestas add column imagen varchar(100);
+alter table productos modify precio decimal(7,2) not null;
+set sql_safe_updates = 0;
+delete from usuarios;
+delete from productos;
+alter table usuarios add column rol varchar(10) not null default 'cliente';
+update usuarios set rol = "admin" where usuario = "Julio" ;

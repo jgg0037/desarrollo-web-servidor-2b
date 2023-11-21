@@ -71,14 +71,25 @@
         $resultado = $conexion -> query($sql);
         $arraycesta = $resultado->fetch_assoc();
         $id_cesta = $arraycesta["idCesta"];
-        echo"<p>El IDCesta es $id_cesta</p>";
 
-        
+        /*Pedir los productos y restar la cantidad*/
+        $sql = "SELECT idProducto, cantidad FROM productoscestas where idCesta = '$id_cesta'";
+        $productosEnCesta = $conexion -> query($sql);
+        foreach ($productosEnCesta as $productoEnCesta) {
+            $idBuscada = $productoEnCesta["idProducto"];
+            $sql = "SELECT idProducto, cantidad FROM productos where idProducto = '$idBuscada'";
+            $productoEnAlmacen = $conexion -> query($sql)->fetch_assoc();
+            $nuevaCantidad = $productoEnAlmacen["cantidad"] - $productoEnCesta["cantidad"];
+            $sql = "UPDATE productos SET cantidad = $nuevaCantidad where idProducto = '$idBuscada'";
+            $conexion -> query($sql);
+            $sql = "DELETE FROM productoscestas WHERE idCesta = '$id_cesta'";
+            $conexion -> query($sql);
+        }
     }
     ?>
     
     <div class="container">
-        <h4><a href="mostrarProductos.php" style="float: right;">Volver a tu cesta</a></h4>
+        <h4><a href="mostrarProductos.php" style="float: right;">Seguir comprando</a></h4>
         <h1>Tus productos</h1>
         <table class="table">
             <thead class="cabecera">
