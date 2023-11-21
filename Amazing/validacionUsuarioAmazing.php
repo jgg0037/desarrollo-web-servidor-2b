@@ -11,40 +11,45 @@
 <body>
     <?php 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $tmp_nombreProducto=depurar($_POST["usuario"]);
-        if(strlen($tmp_nombreProducto)==0){
-            $err_nombreProducto="Rellena el campo";
+        $tmp_usuario=depurar($_POST["usuario"]);
+        if(strlen($tmp_usuario)==0){
+            $err_usuario="Rellena el campo";
         }else{
             $regex="/^[a-zA-Z0-9_ñÑ]{4,12}$/";
-            if(!preg_match($regex,$tmp_nombreProducto)){
-                $err_nombreProducto="Max 12 caracteres y barra baja";
+            if(!preg_match($regex,$tmp_usuario)){
+                $err_usuario="Max 12 caracteres y barra baja";
             }else{
-                $usuario=$tmp_nombreProducto;
+                $usuario=$tmp_usuario;
             }
         }
-        $tmp_cantidad=depurar($_POST["contrasenaUsuario"]);
-        if(strlen($tmp_cantidad)==0){
+        $tmp_contrasenaUsuario=depurar($_POST["contrasenaUsuario"]);
+        if(strlen($tmp_contrasenaUsuario)==0){
             $err_contrasenia="Rellena el campo";
-        }else{
-            if(strlen($tmp_cantidad) > 255){
-                $err_contrasenia="Max 255 caracteres";
+        } else{
+            /*Validación de la contraseña*/
+            if(strlen($tmp_contrasenaUsuario) < 8 || strlen($tmp_contrasenaUsuario) > 20
+            !preg_match('/[a-z]/', $tmp_contrasenaUsuario) ||
+            !preg_match('/[A-Z]/', $tmp_contrasenaUsuario) ||
+            !preg_match('/[0-9]/', $tmp_contrasenaUsuario) ||
+            !preg_match('/[!@#\$%\^&\*\(\)_\+\-=\[\]\{\};:\'",<>\.\?~]/', $tmp_contrasenaUsuario)){
+                $err_contrasenia="Contraseña no válida";
             }else{
-                $contrasena_cifrada = password_hash($tmp_cantidad, PASSWORD_DEFAULT);
+                $contrasena_cifrada = password_hash($tmp_contrasenaUsuario, PASSWORD_DEFAULT);
                 $contrasenaUsuario=$contrasena_cifrada;
             }
         }
         $tmp_nacimiento=depurar($_POST["nacimiento"]);
         if(strlen($tmp_nacimiento)==0){
-            $err_descripcion="Rellena el campo";
+            $err_nacimiento="Rellena el campo";
         }else{
             $dt= DateTime::createFromFormat("Y-m-d",$tmp_nacimiento);
             $fecha_actual=new DateTime();
             $diferencia=$fecha_actual->diff($dt);
             $anios=$diferencia->y;
             if($anios<12){
-                $err_descripcion="Eres menor ";
+                $err_nacimiento="Eres menor ";
             }elseif ($anios>120) {
-                $err_descripcion="Eres viejo ";
+                $err_nacimiento="Eres viejo ";
             } else{
                 $nacimiento=$tmp_nacimiento;
             }

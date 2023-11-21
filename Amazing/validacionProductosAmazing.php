@@ -64,7 +64,6 @@
                 $cantidad=$tmp_cantidad;
             }
         }
-        /*Working on*/
         $imgName = $_FILES["imgProducto"]["name"];
         if(strlen($imgName)== 0){
             $err_imgProducto = "Campo obligatorio";
@@ -74,7 +73,7 @@
                 $err_imgProducto = "Formato incorrecto, solo se admite .png, .jpg, y .jpeg";
             } else {
                 $imgSize = $_FILES["imgProducto"]["size"];
-                if ($imgSize > 5242880) {
+                if ($imgSize > 1048576) {
                     $err_imgProducto = "La imagen no puede pesar más de 5MB";
                 } else {
                 $rutaTemp = $_FILES["imgProducto"]["tmp_name"];
