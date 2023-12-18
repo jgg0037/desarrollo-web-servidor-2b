@@ -14,11 +14,11 @@
 
     /*Comprobar sesion iniciada con admin*/
     session_start();
-    if ($_SESSION["rol"] !== 'admin') {
+    /*if ($_SESSION["rol"] !== 'admin') {
         header('Location: iniciarSesion.php');
         exit;
     }
-
+*/
 
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){

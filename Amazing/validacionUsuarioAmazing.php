@@ -27,7 +27,7 @@
             $err_contrasenia="Rellena el campo";
         } else{
             /*Validación de la contraseña*/
-            if(strlen($tmp_contrasenaUsuario) < 8 || strlen($tmp_contrasenaUsuario) > 20
+            if(strlen($tmp_contrasenaUsuario) < 8 || strlen($tmp_contrasenaUsuario) > 20 ||
             !preg_match('/[a-z]/', $tmp_contrasenaUsuario) ||
             !preg_match('/[A-Z]/', $tmp_contrasenaUsuario) ||
             !preg_match('/[0-9]/', $tmp_contrasenaUsuario) ||
