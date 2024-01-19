@@ -16,6 +16,9 @@
     </style>
 </head>
 <body>
+    <div>
+        <h3><a href="{{route('trains.index')}}">Trenes</a> | <a href="{{route('tickets.index')}}">Tickets</a> | <a href="{{route('train_types.index')}}">Tipos Trenes</a> | <a href="{{route('ticket_types.index')}}">Tipos Tickets</a></h3>
+    </div>
     <h1>Página principal de los Train Types</h1>
     <p>
         <a href="{{ route('train_types.create') }}"> Nuevo TrainType </a>
