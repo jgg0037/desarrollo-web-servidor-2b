@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('passengers');
-            $table->integer('year'); //date? o integer?
+            $table->integer('year');
             $table->unsignedBigInteger('train_type_id');
             $table->foreign('train_type_id')->references('id')->on('train_types');
             $table->timestamps();

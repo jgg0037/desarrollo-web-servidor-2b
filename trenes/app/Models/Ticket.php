@@ -11,4 +11,7 @@ class Ticket extends Model
     public function ticket_type(){
         return $this->belongsTo(TicketType::class);
     }
+    public function train(){
+        return $this->belongsTo(Train::class);
+    }
 }

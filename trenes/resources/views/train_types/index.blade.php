@@ -26,7 +26,6 @@
             <tr>
                 <th>Id</th>
                 <th>Tipo </th>
-                <th>Tipo Nombre</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -37,36 +36,20 @@
                 <tr>
                     <td>{{ $train_type->id }}</td>
                     <td>{{ $train_type->type }}</td>
-                    <td>@php
-                        switch ($train_type->type) {
-                            case 1:
-                                echo "Cercanías";
-                                break;
-                            case 2:
-                                echo "Media Distancia";
-                                break;
-                            case 3:
-                                echo "Alta Velocidad";
-                                break;
-                            default:
-                                
-                                break;
-                        }
-                    @endphp</td>
                     <td>
-                        <form action="{{ route('train_types.show', ['train_types'=>$train_type->id])}}" method="get">
+                        <form action="{{ route('train_types.show', ['train_type'=>$train_type->id])}}" method="get">
                             <input type="Submit" value="Ver">
                         </form>
                     </td>
                     <td>
-                        <form action="{{ route('train_types.destroy', ['train_types'=>$train_type->id])}}" method="post">
+                        <form action="{{ route('train_types.destroy', ['train_type'=>$train_type->id])}}" method="post">
                             @csrf
                             {{method_field('DELETE')}}
                             <input type="Submit" value="Borrar">
                         </form>
                     </td>
                     <td>
-                        <form action="{{ route('train_types.edit', ['train_types'=>$train_type->id])}}" method="get">
+                        <form action="{{ route('train_types.edit', ['train_type'=>$train_type->id])}}" method="get">
                             <input type="Submit" value="Editar">
                         </form>
                     </td>

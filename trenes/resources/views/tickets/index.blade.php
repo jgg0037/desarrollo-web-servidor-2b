@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tickets</title>
     <style>
-        table, tr{
+        table, tr, td{
             border: solid violet 2px;
             border-collapse: collapse;
         }
@@ -37,37 +37,23 @@
             @foreach($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->date }}</td>
-                    <td>{{ $ticket->price }}</td>                                  <!--AQUI BICHO -->
-                    <td>@php
-                        switch ($ticket->type) {
-                            case 1:
-                                echo "Billete sencillo";
-                                break;
-                            case 2:
-                                echo "Abono mensual";
-                                break;
-                            case 3:
-                                echo "Abono trimestral";
-                                break;
-                            default:
-                                
-                                break;
-                        }
-                    @endphp</td>
+                    <td>{{ $ticket->price }}</td>
+                    <td>{{ $ticket->train->train_type->type }}</td> 
+                    <td>{{ $ticket->ticket_type->type }}</td>  
                     <td>
-                        <form action="{{ route('tickets.show', ['tickets'=>$ticket->id])}}" method="get">
+                        <form action="{{ route('tickets.show', ['ticket'=>$ticket->id])}}" method="get">
                             <input type="Submit" value="Ver">
                         </form>
                     </td>
                     <td>
-                        <form action="{{ route('tickets.destroy', ['tickets'=>$ticket->id])}}" method="post">
+                        <form action="{{ route('tickets.destroy', ['ticket'=>$ticket->id])}}" method="post">
                             @csrf
                             {{method_field('DELETE')}}
                             <input type="Submit" value="Borrar">
                         </form>
                     </td>
                     <td>
-                        <form action="{{ route('tickets.edit', ['tickets'=>$ticket->id])}}" method="get">
+                        <form action="{{ route('tickets.edit', ['ticket'=>$ticket->id])}}" method="get">
                             <input type="Submit" value="Editar">
                         </form>
                     </td>

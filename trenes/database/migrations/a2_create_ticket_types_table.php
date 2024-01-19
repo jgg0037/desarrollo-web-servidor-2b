@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ticket_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
+            $table->string('type');
             $table->timestamps();
         });
     }
